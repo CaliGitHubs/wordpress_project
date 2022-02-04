@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/CaliGitHubs/wordpress_project.git'
+        git url: 'https://github.com/CaliGitHubs/wordpress_project.git',
         branch: 'main'
       }
     }
