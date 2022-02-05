@@ -40,7 +40,8 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "wordpress.yml", kubeconfigId: "kubernetes")
+         //kubernetesDeploy(configs: "wordpress.yml", kubeconfigId: "kubernetes")
+          kubectl create -f wordpress.yml
         }
       }
     }
