@@ -37,7 +37,7 @@ pipeline {
       }
     }
 
-    stage('Creating a secret') {
+    /*stage('Creating a secret') {
       steps {
         script {
          //kubernetesDeploy(configs: "wordpress.yml", kubeconfigId: "kubernetes")
@@ -45,7 +45,7 @@ pipeline {
         }
       }
     }
-    
+    */
     stage('Deploying App to Kubernetes') {
       steps {
         script {
