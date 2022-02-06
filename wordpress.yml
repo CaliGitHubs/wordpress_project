@@ -13,6 +13,24 @@ spec:
     tier: frontend
   type: NodePort
 ---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: wordpress-volume
+  labels:
+    app: wordpress
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  claimRef:
+    namespace: default
+    name: wp-pv-claim
+  hostPath:
+    path: "/root/my_test_vol_wp"
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -24,7 +42,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 1Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
