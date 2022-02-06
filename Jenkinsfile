@@ -37,6 +37,15 @@ pipeline {
       }
     }
 
+    stage('Creating a secret') {
+      steps {
+        script {
+         //kubernetesDeploy(configs: "wordpress.yml", kubeconfigId: "kubernetes")
+          kubectl create secret generic mysql-pass --from-literal=password=test1
+        }
+      }
+    }
+    
     stage('Deploying App to Kubernetes') {
       steps {
         script {
@@ -45,7 +54,6 @@ pipeline {
         }
       }
     }
-
   }
 
 }
